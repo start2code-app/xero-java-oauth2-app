@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-	<h1>xero-java-oauth2-app ick was ere xx</h1>
+	<h1>xero-java-oauth2-app ick was ere xx - rebuild</h1>
 	<a href="./Authorization"><img src="<%=request.getContextPath()%>/images/connect-blue.svg"></a>	
 </div>
 </body>
