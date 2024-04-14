@@ -296,8 +296,8 @@ public class AuthenticatedResource extends HttpServlet {
         String savedRefreshToken = store.get(request, "refresh_token");
         String xeroTenantId = store.get(request, "xero_tenant_id");
 
-        System.out.println(savedRefreshToken)
-        System.out.println(xeroTenantId)
+        System.out.println(savedRefreshToken);
+        System.out.println(xeroTenantId);
             
 
         // Check expiration of token and refresh if necessary
