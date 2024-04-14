@@ -304,7 +304,7 @@ public class AuthenticatedResource extends HttpServlet {
         // This should be done prior to each API call to ensure your accessToken is
         // valid
         String accessToken = new TokenRefresh().checkToken(savedAccessToken, savedRefreshToken, response);
-
+        System.out.println(accessToken);
         // Init AccountingApi client
         ApiClient defaultClient = new ApiClient();
         defaultClient.setConnectionTimeout(6000);
