@@ -52,7 +52,7 @@ public class Callback extends HttpServlet {
         if (request.getParameter("code") != null) {
             code = request.getParameter("code");
         }
-
+        System.out.println("callback %s",code);
         // Retrieve your stored secretState variable 
         TokenStorage store = new TokenStorage();
         String secretState =store.get(request, "state");
