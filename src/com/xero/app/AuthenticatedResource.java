@@ -295,7 +295,7 @@ public class AuthenticatedResource extends HttpServlet {
         String savedAccessToken = store.get(request, "access_token");
         String savedRefreshToken = store.get(request, "refresh_token");
         String xeroTenantId = store.get(request, "xero_tenant_id");
-
+        System.out.println(savedAccessToken);
         System.out.println(savedRefreshToken);
         System.out.println(xeroTenantId);
             
