@@ -84,7 +84,7 @@ public class Authorization extends HttpServlet {
 
         String url = flow.newAuthorizationUrl().setClientId(clientId).setScopes(scopeList).setState(secretState)
                 .setRedirectUri(redirectURI).build();
-
+        System.out.println(url);
         response.sendRedirect(url);
     }
 }
