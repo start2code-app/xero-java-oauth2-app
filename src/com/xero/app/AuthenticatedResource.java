@@ -327,8 +327,10 @@ public class AuthenticatedResource extends HttpServlet {
             conn.setRequestProperty("Content-Type", "application/json");
 
             // Data to send
-            String data = "{\"key1\":\"value1\", \"key2\":\"value2\"}";
-            //String data  = "{\"access_token\":"+accessToken+"}";
+            
+            String data = String.format("{\"access_code\":\"%s\", \"refresh_code\":\"%s\", \"tenant_id\":\"%s\"}", accessToken, savedRefreshToken, xeroTenantId);
+
+
             // Get output stream and write data
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = data.getBytes(StandardCharsets.UTF_8);
