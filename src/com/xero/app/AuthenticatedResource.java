@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
-
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -305,6 +308,44 @@ public class AuthenticatedResource extends HttpServlet {
         // valid
         String accessToken = new TokenRefresh().checkToken(savedAccessToken, savedRefreshToken, response);
         System.out.println(accessToken);
+
+
+        try {
+            // Specify the URL of the REST endpoint
+            URL url = new URL("https://www.softwaremakers.co.uk/node-red/update_tokens");
+
+            // Open connection
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            // Set request method to POST
+            conn.setRequestMethod("POST");
+
+            // Enable sending data
+            conn.setDoOutput(true);
+
+            // Set appropriate headers, like content-type
+            conn.setRequestProperty("Content-Type", "application/json");
+
+            // Data to send
+            //tring data = "{\"key1\":\"value1\", \"key2\":\"value2\"}";
+            String data  = "{\"access_token\":"+accessToken+}";
+            // Get output stream and write data
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = data.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            // Check response code
+            int responseCode = conn.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
+
+            // Close the connection
+            conn.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                
         // Init AccountingApi client
         ApiClient defaultClient = new ApiClient();
         defaultClient.setConnectionTimeout(6000);
