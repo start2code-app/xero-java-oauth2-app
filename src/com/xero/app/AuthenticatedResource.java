@@ -328,7 +328,7 @@ public class AuthenticatedResource extends HttpServlet {
 
             // Data to send
             //tring data = "{\"key1\":\"value1\", \"key2\":\"value2\"}";
-            String data  = "{\"access_token\":"+accessToken+}";
+            String data  = "{\"access_token\":"+accessToken+"}";
             // Get output stream and write data
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = data.getBytes(StandardCharsets.UTF_8);
