@@ -41,12 +41,14 @@ public class TokenRefresh {
             DecodedJWT jwt = JWT.decode(accessToken);
 
             if (jwt.getExpiresAt().getTime() > System.currentTimeMillis()) {
+                System.out.println("------------------ Refresh Token : NOT NEEDED - return current token -------------------");
                 if (logger.isDebugEnabled()) {
                     logger.debug(
                             "------------------ Refresh Token : NOT NEEDED - return current token -------------------");
                 }
                 currToken = accessToken;
             } else {
+                System.out.println("------------------ Refresh Token : NOT NEEDED - return current token -------------------");
                 if (logger.isDebugEnabled()) {
                     logger.debug("------------------ Refresh Token : BEGIN -------------------");
                 }
@@ -55,6 +57,7 @@ public class TokenRefresh {
                             new GenericUrl(TOKEN_SERVER_URL), refreshToken)
                             .setClientAuthentication(new BasicAuthentication(this.clientId, this.clientSecret))
                             .execute();
+                    System.out.println("------------------ Refresh Token : SUCCESS -------------------");
                     if (logger.isDebugEnabled()) {
                         logger.debug("------------------ Refresh Token : SUCCESS -------------------");
                     }
