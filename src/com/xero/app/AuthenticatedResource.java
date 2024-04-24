@@ -4217,7 +4217,7 @@ public class AuthenticatedResource extends HttpServlet {
 
                 // GET all contact
                 Contacts contactsAll = accountingApi.getContacts(accessToken, xeroTenantId, null, null, null, null, null, null, null, null);
-                messages.add("Get a All Contacts - Total : " + contacts.getContacts().size());
+                messages.add("Get a All Contacts - Total : " + contactsAll.getContacts().size());
 
                 // GET one contact
                 //UUID oneContactID = contactsAll.getContacts().get(0).getContactID();
