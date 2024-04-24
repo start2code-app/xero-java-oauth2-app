@@ -4183,78 +4183,78 @@ public class AuthenticatedResource extends HttpServlet {
             /* CONTACTS */
             try {
                 // CREATE Single contact
-                Contact contact = new Contact();
+                //Contact contact = new Contact();
                 //contact.setName("Foo" + loadRandomNum());
-                contact.setName("Foo");
-                contact.setEmailAddress("sid" + loadRandomNum() + "@blah.com");
-                List<Phone> phones = new ArrayList<Phone>();
-                Phone phone = new Phone();
-                phone.setPhoneType(PhoneTypeEnum.MOBILE);
-                phone.setPhoneNumber("555-1212");
-                phone.setPhoneAreaCode("415");
-                phones.add(phone);
-                contact.setPhones(phones);
+                //contact.setName("Foo");
+                //contact.setEmailAddress("sid" + loadRandomNum() + "@blah.com");
+                //List<Phone> phones = new ArrayList<Phone>();
+                //Phone phone = new Phone();
+                //phone.setPhoneType(PhoneTypeEnum.MOBILE);
+                //phone.setPhoneNumber("555-1212");
+                //phone.setPhoneAreaCode("415");
+                //phones.add(phone);
+                //contact.setPhones(phones);
                
-                Contacts contacts = new Contacts();
-                Contact contact2 = new Contact();
-                contact2.setName("Foo"  + loadRandomNum());
-                contact2.setName("Foo");
-                contacts.addContactsItem(contact2);
+                //Contacts contacts = new Contacts();
+                //Contact contact2 = new Contact();
+                //contact2.setName("Foo"  + loadRandomNum());
+                //contact2.setName("Foo");
+                //contacts.addContactsItem(contact2);
                 
-                Contact contact3 = new Contact();
-                contact3.setName("Foo"  + loadRandomNum());
-                contacts.addContactsItem(contact3);
+                //Contact contact3 = new Contact();
+                //contact3.setName("Foo"  + loadRandomNum());
+                //contacts.addContactsItem(contact3);
 
                 //CREATE MULTIPLE CONTACTS
-                Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts, true);
-                messages.add("Create multiple Contacts - count : " + newContacts.getContacts().size());
+                //Contacts newContacts = accountingApi.createContacts(accessToken, xeroTenantId, contacts, true);
+                //messages.add("Create multiple Contacts - count : " + newContacts.getContacts().size());
 
                 // MODIFY One contact to force error and test SummarizeErrors
-                newContacts.getContacts().get(0).setSalesDefaultAccountCode("001");                
+                //newContacts.getContacts().get(0).setSalesDefaultAccountCode("001");                
                 // UPDATE MULTIPLE CONTACTS                
-                Contacts updatedContacts = accountingApi.updateOrCreateContacts(accessToken, xeroTenantId, newContacts, false);
-                messages.add("Update multiple Contact - Name : " + updatedContacts.getContacts().get(0).getName());
+                //Contacts updatedContacts = accountingApi.updateOrCreateContacts(accessToken, xeroTenantId, newContacts, false);
+                //messages.add("Update multiple Contact - Name : " + updatedContacts.getContacts().get(0).getName());
 
                 // GET all contact
                 Contacts contactsAll = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
                 messages.add("Get a All Contacts - Total : " + contacts.getContacts().size());
 
                 // GET one contact
-                UUID oneContactID = contactsAll.getContacts().get(0).getContactID();
-                Contacts oneContact = accountingApi.getContact(accessToken, xeroTenantId, oneContactID);
-                messages.add("Get a One Contact - Name : " + oneContact.getContacts().get(0).getName());
+                //UUID oneContactID = contactsAll.getContacts().get(0).getContactID();
+                //Contacts oneContact = accountingApi.getContact(accessToken, xeroTenantId, oneContactID);
+                //messages.add("Get a One Contact - Name : " + oneContact.getContacts().get(0).getName());
 
                 // GET contact cisSettings
-                where = "Name==\"sidney\"";
-                Contacts cisContact = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
-                if (cisContact.getContacts().size() > 0) {
-                    CISSettings cisSettings = accountingApi.getContactCISSettings(accessToken, xeroTenantId,
-                            cisContact.getContacts().get(0).getContactID());
-                    messages.add("Get a Contact cisSettings - Enabled? : "
-                            + cisSettings.getCiSSettings().get(0).getCiSEnabled());
-                }
+                //where = "Name==\"sidney\"";
+                //Contacts cisContact = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                //if (cisContact.getContacts().size() > 0) {
+                //    CISSettings cisSettings = accountingApi.getContactCISSettings(accessToken, xeroTenantId,
+                //            cisContact.getContacts().get(0).getContactID());
+                //    messages.add("Get a Contact cisSettings - Enabled? : "
+                //            + cisSettings.getCiSSettings().get(0).getCiSEnabled());
+                //}
 
-                where = null;
+                //where = null;
                 // GET active contacts
-                where = "ContactStatus==\"ACTIVE\"";
-                Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
-                messages.add("Get a all ACTIVE Contacts - Total : " + contactsWhere.getContacts().size());
-                where = null;
+                //where = "ContactStatus==\"ACTIVE\"";
+                //Contacts contactsWhere = accountingApi.getContacts(accessToken, xeroTenantId, ifModifiedSince, where, order, contactIds, null, includeArchived, summaryOnly, null);
+                //messages.add("Get a all ACTIVE Contacts - Total : " + contactsWhere.getContacts().size());
+                //where = null;
 
                 // Get Contact History
-                HistoryRecords contactHistory = accountingApi.getContactHistory(accessToken, xeroTenantId, oneContactID);
-                messages.add("Contact History - count : " + contactHistory.getHistoryRecords().size());
+                //HistoryRecords contactHistory = accountingApi.getContactHistory(accessToken, xeroTenantId, oneContactID);
+                //messages.add("Contact History - count : " + contactHistory.getHistoryRecords().size());
 
                 // Create Contact History
-                HistoryRecords newHistoryRecords = new HistoryRecords();
-                HistoryRecord newHistoryRecord = new HistoryRecord();
-                newHistoryRecord.setDetails("Hello World");
-                newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
+                //HistoryRecords newHistoryRecords = new HistoryRecords();
+                //HistoryRecord newHistoryRecord = new HistoryRecord();
+                //newHistoryRecord.setDetails("Hello World");
+                //newHistoryRecords.addHistoryRecordsItem(newHistoryRecord);
 
-                HistoryRecords newInvoiceHistory = accountingApi.createContactHistory(accessToken, xeroTenantId,
-                        oneContactID, newHistoryRecords);
-                messages.add("Contact History - note added to  : "
-                        + newInvoiceHistory.getHistoryRecords().get(0).getDetails());
+                //HistoryRecords newInvoiceHistory = accountingApi.createContactHistory(accessToken, xeroTenantId,
+                //        oneContactID, newHistoryRecords);
+                //messages.add("Contact History - note added to  : "
+                //        + newInvoiceHistory.getHistoryRecords().get(0).getDetails());
                  
             } catch (XeroBadRequestException e) {
                 this.addBadRequest(e, messages); 
